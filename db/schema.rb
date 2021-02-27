@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_095332) do
+ActiveRecord::Schema.define(version: 2021_02_27_132710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,9 +18,18 @@ ActiveRecord::Schema.define(version: 2021_02_26_095332) do
   create_table "courses", force: :cascade do |t|
     t.string "course_title"
     t.string "course_details"
-    t.string "course_author"
+    t.integer "course_author"
+    t.string "course_image"
+    t.string "course_price"
     t.string "course_requirements"
     t.string "course_difficulty"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favourites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,4 +45,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_095332) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "courses", "users", column: "course_author"
+  add_foreign_key "favourites", "courses"
+  add_foreign_key "favourites", "users"
 end
