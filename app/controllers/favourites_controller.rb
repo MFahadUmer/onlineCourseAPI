@@ -13,7 +13,7 @@ class FavouritesController < ApplicationController
   end
 
   def destroy
-    favourite = Favourite.find(params[:id]);
+    favourite = Favourite.find(params[:id])
     favourite.destroy!
 
     head :no_content

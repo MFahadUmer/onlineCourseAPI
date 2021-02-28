@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if user.save
       render json: user, status: 201
     else
-      render json: user.errors,status: :unprocessable_entity
+      render json: user.errors, status: :unprocessable_entity
     end
   end
 
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if user
       render json: user, status: 200
     else
-      render json: "Incorrect Details.", status: 401
+      render json: 'Incorrect Details.', status: 401
     end
   end
 
@@ -28,6 +28,6 @@ class UsersController < ApplicationController
   end
 
   def user_login_params
-    params.require(:user).permit(:username, :password);
+    params.require(:user).permit(:username, :password)
   end
 end
