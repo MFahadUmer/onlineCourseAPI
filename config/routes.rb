@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :create]
   post 'login', to: 'users#login'
   resources :courses, only: [:index, :create,:destroy]
+  resources :favourites, only: [:index, :create, :show, :destroy]
 end

@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :courses
+  has_many :favourites
+
   def as_json(options={})
     {
         :user_id => self.id,

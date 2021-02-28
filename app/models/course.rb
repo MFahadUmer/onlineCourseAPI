@@ -1,4 +1,7 @@
 class Course < ApplicationRecord
+  belongs_to :user, class_name: 'User', foreign_key: 'course_author'
+  has_many :favourites
+
   def as_json(options={})
     {
         :course_id => self.id,
