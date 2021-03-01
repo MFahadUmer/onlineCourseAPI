@@ -12,6 +12,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def userfavourite
+    user = User.find(params[:id])
+    if user
+      render json: user.favourites_courses, status: 200
+    else
+      render json: 'No Favourite Courses', status: 401
+    end
+  end
+
+  def authorcourses
+    user = User.find(params[:id])
+    if user
+      render json: user.courses, status: 200
+    else
+      render json: 'No Courses Found by You.', status: 401
+    end
+  end
+
   def login
     user = User.find_by(user_login_params)
     if user

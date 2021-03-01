@@ -3,6 +3,11 @@ class FavouritesController < ApplicationController
     render json: Favourite.all
   end
 
+  def show
+    favourite = Favourite.where(user_id: params[:id]);
+    render json: favourite, status: 201
+  end
+
   def create
     favourite = Favourite.new(favourite_params)
     if favourite.save
@@ -13,7 +18,9 @@ class FavouritesController < ApplicationController
   end
 
   def destroy
-    favourite = Favourite.find(params[:id])
+    p "yess"
+    p params[:user_id]
+    favourite = Favourite.where(user_id: params[:user_id], course_id: params[:course_id])
     favourite.destroy!
 
     head :no_content

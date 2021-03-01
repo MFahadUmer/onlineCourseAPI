@@ -8,5 +8,6 @@ class CreateFavourites < ActiveRecord::Migration[6.1]
     end
     add_foreign_key :favourites, :users, column: :user_id
     add_foreign_key :favourites, :courses, column: :course_id
+    add_index :favourites, [:user_id, :course_id], unique: true, name: 'favourites_index'
   end
 end
