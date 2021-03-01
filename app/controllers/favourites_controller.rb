@@ -4,7 +4,7 @@ class FavouritesController < ApplicationController
   end
 
   def show
-    favourite = Favourite.where(user_id: params[:id]);
+    favourite = Favourite.where(user_id: params[:id])
     render json: favourite, status: 201
   end
 
@@ -17,18 +17,19 @@ class FavouritesController < ApplicationController
     end
   end
 
-  def destroy
-    p "yess"
-    p params[:user_id]
-    favourite = Favourite.where(user_id: params[:user_id], course_id: params[:course_id])
-    favourite.destroy!
+  def deletefavourite
+    Favourite.destroy_by(delete_params)
 
-    head :no_content
+    render json: 'Removed From Favourites'
   end
 
   private
 
   def favourite_params
+    params.require(:favourite).permit(:user_id, :course_id)
+  end
+
+  def delete_params
     params.require(:favourite).permit(:user_id, :course_id)
   end
 end

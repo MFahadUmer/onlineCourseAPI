@@ -14,6 +14,6 @@ class User < ApplicationRecord
     }
   end
 
-  validates :first_name, :last_name, :username, :email, :password, presence: true, length: {minimum: 4}
+  validates :first_name, :last_name, :username, :email, :password, presence: true, length: { minimum: 4 }
   validates :username, :email, uniqueness: { case_sensitive: false }
 end

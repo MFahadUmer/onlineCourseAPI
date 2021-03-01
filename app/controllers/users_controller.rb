@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def userfavourite
     user = User.find(params[:id])
     if user
-      render json: user.favourites_courses, status: 200
+      render json: user.favourites_courses.ids, status: 200
     else
       render json: 'No Favourite Courses', status: 401
     end
