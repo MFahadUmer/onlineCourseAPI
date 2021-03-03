@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :courses, class_name: 'Course', foreign_key: 'course_author'
   has_many :favourites, class_name: 'Favourite', foreign_key: 'user_id'
   has_many :favourites_courses, through: :favourites, source: :course
+  has_secure_password
 
   def as_json(_options = {})
     {
@@ -14,6 +15,8 @@ class User < ApplicationRecord
     }
   end
 
-  validates :first_name, :last_name, :username, :email, :password, presence: true, length: { minimum: 4 }
+  validates :first_name, :last_name, :username, :email, presence: true, length: { minimum: 4 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates :username, :email, uniqueness: { case_sensitive: false }
 end

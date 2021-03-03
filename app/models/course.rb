@@ -16,4 +16,5 @@ class Course < ApplicationRecord
       date: created_at
     }
   end
+  validates :course_title, :course_details, :course_author, :course_price, presence: true, length: { minimum: 4 }
 end
