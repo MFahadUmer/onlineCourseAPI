@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       token = encode_token({ user_id: user.id })
-      render json: { user: user, token: token }
+      render json: { user: user, token: token }, status: 201
     else
-      render json: { error: user.errors, status: :unprocessable_entity }
+      render json: { error: user.errors }, status: :unprocessable_entity
     end
   end
 
@@ -24,32 +24,23 @@ class UsersController < ApplicationController
     end
   end
 
-  def authorcourses
-    user = User.find(params[:id])
-    if user
-      render json: user.courses, status: 200
-    else
-      render json: 'No Courses Found by You.', status: 401
-    end
-  end
-
   def login
     @user = User.find_by(username: params[:username])
-    if @user
+    if @user&.authenticate(params[:password])
       token = encode_token({ user_id: @user.id })
-      render json: { user: @user, token: token }
+      render json: { user: @user, token: token }, status: 200
     else
-      render json: 'Incorrect Details.', status: 401
+      render json: { error: 'Incorrect Details' }, status: 401
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :username, :email, :user_type, :password_digest)
+    params.permit(:first_name, :last_name, :username, :email, :user_type, :password)
   end
 
-  def user_login_params
+  def login_params
     params.require(:user).permit(:username, :password)
   end
 end

@@ -1,4 +1,5 @@
 class FavouritesController < ApplicationController
+  before_action :authorized, only: [:index]
   def index
     render json: Favourite.all
   end

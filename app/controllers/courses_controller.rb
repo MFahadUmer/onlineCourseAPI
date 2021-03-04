@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
   def create
     course = Course.new(course_params)
     if course.save
-      render json: { courses: course, status: 201 }
+      render json: course, status: 201
     else
       render json: course.errors, status: :unprocessable_entity
     end
