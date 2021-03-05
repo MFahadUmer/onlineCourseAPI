@@ -23,12 +23,11 @@ default: &default
 
 development:
   <<: *default
-  database: dfca88aibniq6k_developemnt
-  username: gycqkyzsuvupwe
-  password: 'ef4f8f7518432edf72ea6ba5eab708390200ee2b7e9ac71a3215166b31becf7c'
+  database: API_development
+  username: courseapi
+  password: 'courseapi'
   port: 5432
-  host: ec2-3-224-251-47.compute-1.amazonaws.com
-
+  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -62,11 +61,11 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: dfca88aibniq6k_test
-  username: gycqkyzsuvupwe
-  password: 'ef4f8f7518432edf72ea6ba5eab708390200ee2b7e9ac71a3215166b31becf7c'
+  database: API_test
+  username: courseapi
+  password: 'courseapi'
   port: 5432
-  host: ec2-3-224-251-47.compute-1.amazonaws.com
+  host: localhost
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
