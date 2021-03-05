@@ -101,7 +101,7 @@ curl -X GET \
     }
 ]
 ````
-### Book Appointment
+### Add New Course
 This is the API endpoint related to adding course.
 #### Endpoint
 `https://desolate-cove-81044.herokuapp.com/courses/`
@@ -145,17 +145,21 @@ curl -X POST \
   https://desolate-cove-81044.herokuapp.com/favourites/ \
   -H 'Authorization: Bearer <Token>' \
   -H 'cache-control: no-cache' \
-  -d 'user_id=30&course_id:82'
+  -d 'user_id=2&course_id:2'
 ````
 #### Sample Response
 
 ```
 {
-    "id": 2,
-    "user_id": 30,
-    "course_id": 82,
-    "created_at": "2021-03-05T01:54:19.411Z",
-    "updated_at": "2021-03-05T01:54:19.411Z"
+    "course_id": 2,
+    "title": "Gulistan E Saadi",
+    "details": "A very Nice Course",
+    "author": 2,
+    "requirements": "No Requirements",
+    "difficulty": "Intermediate",
+    "image": "https://www.wrappixel.com/wp-content/uploads/2019/08/guide-for-react-redux.jpg",
+    "price": "50",
+    "date": "2021-03-05T04:44:42.928Z"
 }
 ```
 

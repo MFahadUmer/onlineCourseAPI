@@ -1,27 +1,31 @@
 class FavouritesController < ApplicationController
-  before_action :authorized, only: [:index]
-  def index
-    render json: Favourite.all
-  end
+  before_action :authorized, only: [:destroy]
 
   def show
-    favourite = Favourite.where(user_id: params[:id])
-    render json: favourite, status: 201
+    favourite = Favourite.find_by(user_id: params[:id])
+    if favourite
+      render json: favourite.course, status: 201
+    else
+      render json: favourite.error, status: 400
+    end
   end
 
   def create
     favourite = Favourite.new(favourite_params)
     if favourite.save
-      render json: favourite, status: 201
+      render json: favourite.course, status: 201
     else
       render json: favourite.errors, status: :unprocessable_entity
     end
   end
 
   def deletefavourite
-    Favourite.destroy_by(delete_params)
-
-    render json: 'Removed From Favourites'
+    favourite = Favourite.destroy_by(delete_params)
+    if favourite
+      render json: 'Removed From Favourites'
+    else
+      render json: favourite.error, status: 401
+    end
   end
 
   private
