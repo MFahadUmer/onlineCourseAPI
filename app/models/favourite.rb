@@ -4,9 +4,9 @@ class Favourite < ApplicationRecord
 
   def as_json(_options = {})
     {
-        id: self.id,
-        user_id: self.user_id,
-        course_id: self.course_id
+      id: id,
+      user_id: user_id,
+      course_id: course_id
     }
   end
 end
