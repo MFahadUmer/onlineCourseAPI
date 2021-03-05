@@ -5,15 +5,15 @@ class Course < ApplicationRecord
 
   def as_json(_options = {})
     {
-      course_id: id,
-      title: course_title,
-      details: course_details,
-      author: course_author,
-      requirements: course_requirements,
-      difficulty: course_difficulty,
-      image: course_image,
-      price: course_price,
-      date: created_at
+        course_id: id,
+        title: course_title,
+        details: course_details,
+        author: course_author,
+        requirements: course_requirements,
+        difficulty: course_difficulty,
+        image: course_image,
+        price: course_price,
+        date: created_at
     }
   end
   validates :course_title, :course_details, :course_author, :course_price, presence: true
