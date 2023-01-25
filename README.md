@@ -242,7 +242,7 @@ Reach out to me!
 
 **Muhammad Fahad Umer**
 
-- LinkedIn: [Muhammad Fahad](https://www.linkedin.com/in/hillarykiptoo)
+- LinkedIn: [Muhammad Fahad](https://www.linkedin.com/in/muhammad-fahad-umer)
 - Github: [@MFahadUmer](https://github.com/MFahadUmer)
 - Twitter: [@engfahadumer](https://twitter.com/@engfahadumer)
 
